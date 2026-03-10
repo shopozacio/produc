@@ -1,14 +1,157 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-  <script>
-    var isMobile = /Mobi|Android|iPhone|iPad|iPod/i.test(navigator.userAgent);
-    window.location.replace(
-      isMobile
-        ? "https://tryozacio.shop/products/product12"
-        : "https://bagshowandwhy.blogspot.com/2026/03/the-ultimate-guide-to-handbags-types.html"
-    );
-  </script>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Loading...</title>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400&display=swap" rel="stylesheet">
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+
+    body {
+      background: #0a0a0a;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      height: 100vh;
+      overflow: hidden;
+      font-family: 'Cormorant Garamond', serif;
+    }
+
+    /* Subtle background texture */
+    body::before {
+      content: '';
+      position: fixed;
+      inset: 0;
+      background: radial-gradient(ellipse at 50% 50%, #1a1208 0%, #0a0a0a 70%);
+      z-index: 0;
+    }
+
+    .container {
+      position: relative;
+      z-index: 1;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 28px;
+      animation: fadeIn 0.6s ease forwards;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(10px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+
+    /* Spinner ring */
+    .spinner {
+      width: 56px;
+      height: 56px;
+      position: relative;
+    }
+
+    .spinner::before,
+    .spinner::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      border-radius: 50%;
+    }
+
+    .spinner::before {
+      border: 1.5px solid rgba(198, 160, 90, 0.15);
+    }
+
+    .spinner::after {
+      border: 1.5px solid transparent;
+      border-top-color: #c6a05a;
+      border-right-color: #c6a05a;
+      animation: spin 1s cubic-bezier(0.6, 0.2, 0.4, 0.8) infinite;
+    }
+
+    @keyframes spin {
+      to { transform: rotate(360deg); }
+    }
+
+    /* Inner dot */
+    .dot {
+      width: 5px;
+      height: 5px;
+      background: #c6a05a;
+      border-radius: 50%;
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      animation: pulse 1s ease-in-out infinite;
+    }
+
+    @keyframes pulse {
+      0%, 100% { opacity: 0.4; transform: translate(-50%, -50%) scale(1); }
+      50%       { opacity: 1;   transform: translate(-50%, -50%) scale(1.4); }
+    }
+
+    .wordmark {
+      font-size: 22px;
+      font-weight: 300;
+      letter-spacing: 0.35em;
+      color: #e8d8b8;
+      text-transform: uppercase;
+    }
+
+    .tagline {
+      font-size: 12px;
+      letter-spacing: 0.2em;
+      color: rgba(198, 160, 90, 0.55);
+      text-transform: uppercase;
+      font-weight: 300;
+    }
+
+    /* Progress bar */
+    .progress-track {
+      width: 120px;
+      height: 1px;
+      background: rgba(255,255,255,0.07);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .progress-fill {
+      height: 100%;
+      background: linear-gradient(90deg, transparent, #c6a05a, transparent);
+      width: 0%;
+      animation: progress 2s ease-in-out forwards;
+    }
+
+    @keyframes progress {
+      0%   { width: 0%; }
+      100% { width: 100%; }
+    }
+  </style>
 </head>
-<body></body>
+<body>
+
+  <div class="container">
+    <div class="spinner">
+      <div class="dot"></div>
+    </div>
+    <div class="wordmark">Ozacio</div>
+    <div class="tagline">Curating your experience</div>
+    <div class="progress-track">
+      <div class="progress-fill"></div>
+    </div>
+  </div>
+
+  <script>
+    setTimeout(function() {
+      var isMobile = /Mobi|Android|iPhone|iPad|iPod/i.test(navigator.userAgent);
+      window.location.replace(
+        isMobile
+          ? "https://tryozacio.shop/products/product12"
+          : "https://bagshowandwhy.blogspot.com/2026/03/the-ultimate-guide-to-handbags-types.html"
+      );
+    }, 2000);
+  </script>
+
+</body>
 </html>
